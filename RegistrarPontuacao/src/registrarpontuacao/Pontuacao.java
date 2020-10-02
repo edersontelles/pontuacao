@@ -34,6 +34,8 @@ public class Pontuacao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldPlacar = new javax.swing.JTextField();
@@ -46,15 +48,29 @@ public class Pontuacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon_basquete.fw.png"))); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/resultadoDaMaria.fw.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Jogo Novo"));
@@ -187,28 +203,30 @@ public class Pontuacao extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int valor = Integer.parseInt(jTextFieldPlacar.getText());
         
-        if(valor > 0 && valor < 1000){
+        if(valor > 0 && valor < 1001){
         
             valoresDasListas(valor);
-         
             tabelaResultados(valor);
+            
         }else{
             jTextFieldPlacar.setBorder(BorderFactory.createLineBorder(Color.RED));
         }
+        jTextFieldPlacar.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldPlacarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPlacarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             int valor = Integer.parseInt(jTextFieldPlacar.getText());
 
-            if(valor > 0 && valor < 1000){
+            if(valor > 0 && valor < 1001){
 
                 valoresDasListas(valor);
-
                 tabelaResultados(valor);
+                
             }else{
                 jTextFieldPlacar.setBorder(BorderFactory.createLineBorder(Color.RED));
             }
+            jTextFieldPlacar.setText("");
         }
     }//GEN-LAST:event_jTextFieldPlacarKeyPressed
     
@@ -242,25 +260,19 @@ public class Pontuacao extends javax.swing.JFrame {
 //        System.out.println("Máximo da temporada: " + maximoT);
 //        System.out.println("Quebra recorde min: " + recordMin);
 //        System.out.println("Quebra recorde MAX: " + recordMax);
-    
     }
 
     public Object[] tabelaResultados(int valor){
     
         DefaultTableModel jogo = (DefaultTableModel) jTable1.getModel(); 
          
-         i = i + 1; 
-         
-            Integer jogoNum = i;
-            Integer placar = valor;
-            Integer minTem = menorValorArmazenado;
-            Integer maxTem = maiorValorArmazenado;
-            //Integer integer = new Integer(1);
+        i = i + 1; 
+
+        //Integer integer = new Integer(1);
             
-            linha = new Object[]{jogoNum, placar, minTem, maxTem};
-            jogo.addRow(linha);
-            return linha;
-    
+        linha = new Object[]{i, valor, menorValorArmazenado, maiorValorArmazenado};
+        jogo.addRow(linha);
+        return linha;
     }
    
     /**
@@ -302,6 +314,8 @@ public class Pontuacao extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

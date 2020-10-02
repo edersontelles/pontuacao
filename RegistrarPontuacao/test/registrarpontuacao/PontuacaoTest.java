@@ -57,8 +57,6 @@ public class PontuacaoTest {
         Object[] test = new Object[4];
         Assert.assertArrayEquals(test, n.linha);
         
-        //Assert.assertArrayEquals(null, n.linha);
-        
         Assert.assertNotNull(n.linha);
     }
 
